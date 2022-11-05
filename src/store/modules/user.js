@@ -34,8 +34,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({loginType: loginType, loginParam: JSON.stringify(loginParam)}).then(response => {
         const {data} = response
-        console.log(data)
-        setToken(data.token)
+        commit('SET_TOKEN','data');
+        setToken(data)
         resolve()
       }).catch(error => {
         reject(error)
@@ -54,7 +54,6 @@ const actions = {
         }
 
         const {name, avatar} = data
-
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         resolve(data)
